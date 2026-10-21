@@ -1,0 +1,99 @@
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    background: #11161d;
+    color: #e6e9ef;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 24px;
+    background: #1a212b;
+    border-bottom: 2px solid #2c3544;
+}
+
+h1 { margin: 0; font-size: 1.5rem; }
+
+select, button, textarea, input[type=text] {
+    font: inherit;
+    color: inherit;
+    background: #232b38;
+    border: 1px solid #3a4558;
+    border-radius: 6px;
+}
+
+select { padding: 6px 10px; }
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding: 24px;
+    justify-content: center;
+}
+
+.screen { flex: 0 1 800px; }
+
+canvas {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    border: 3px solid #3a4558;
+    background: #0b0e12;
+}
+
+.panel { flex: 1 1 420px; max-width: 620px; display: flex; flex-direction: column; gap: 12px; }
+
+textarea {
+    width: 100%;
+    min-height: 280px;
+    padding: 12px;
+    font-family: ui-monospace, Menlo, Consolas, monospace;
+    font-size: 1rem;
+    line-height: 1.5;
+    resize: vertical;
+    tab-size: 2;
+}
+
+.buttons { display: flex; flex-wrap: wrap; gap: 8px; }
+
+button { padding: 8px 14px; cursor: pointer; }
+button:hover { background: #2f394a; }
+button.primary { background: #1f8a4c; border-color: #35b86e; }
+button.primary:hover { background: #28a35c; }
+
+.speed { display: flex; align-items: center; gap: 10px; }
+.speed input { flex: 1; }
+
+.cmdline { display: flex; align-items: center; gap: 8px; }
+.cmdline span { font-weight: bold; color: #ffd479; font-family: ui-monospace, Menlo, monospace; }
+.cmdline input { flex: 1; padding: 8px 10px; font-family: ui-monospace, Menlo, Consolas, monospace; }
+
+.out {
+    margin: 0;
+    min-height: 3.2em;
+    max-height: 200px;
+    overflow: auto;
+    padding: 10px 14px;
+    border-radius: 6px;
+    background: #1a212b;
+    font-family: ui-monospace, Menlo, Consolas, monospace;
+    font-size: 0.95rem;
+    white-space: pre-wrap;
+}
+.out .err { color: #ffb4b4; }
+.out .ok { color: #a6f5b8; }
+
+details { background: #1a212b; border-radius: 6px; padding: 8px 14px; }
+summary { cursor: pointer; }
+
+.ref { border-collapse: collapse; margin-top: 8px; font-size: 0.88rem; }
+.ref td { padding: 4px 10px 4px 0; vertical-align: top; }
+code { background: #0d1117; padding: 1px 5px; border-radius: 4px; color: #ffd479; }

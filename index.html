@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Logo – želví grafika</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>🐢 Logo – želví grafika</h1>
+        <label>Ukázka:
+            <select id="examples"></select>
+        </label>
+    </header>
+
+    <main>
+        <section class="screen">
+            <canvas id="screen" width="800" height="800"></canvas>
+        </section>
+
+        <section class="panel">
+            <textarea id="code" spellcheck="false" autocapitalize="off" autocomplete="off"
+                      placeholder="Napiš program, např.  OPAKUJ 4 [VPRED 100 VPRAVO 90]"></textarea>
+
+            <div class="buttons">
+                <button id="run" class="primary">▶ Spustit</button>
+                <button id="stop">⏹ Stop</button>
+                <button id="clear">🧹 Smazat obrazovku</button>
+                <button id="png">💾 Uložit PNG</button>
+            </div>
+
+            <label class="speed">Rychlost:
+                <input type="range" id="speed" min="0" max="100" value="75">
+            </label>
+
+            <div class="cmdline">
+                <span>?</span>
+                <input id="cmd" type="text" spellcheck="false" autocapitalize="off" autocomplete="off"
+                       placeholder="příkazový řádek – Enter provede příkaz hned, želva zůstane kde je">
+            </div>
+
+            <pre id="out" class="out">Hotovo.</pre>
+
+            <details>
+                <summary>Přehled příkazů</summary>
+                <table class="ref">
+                    <tr><td><code>VPRED n</code> / <code>FD n</code></td><td>želva jde dopředu o n kroků</td></tr>
+                    <tr><td><code>VZAD n</code> / <code>BK n</code></td><td>zpět</td></tr>
+                    <tr><td><code>VLEVO n</code> / <code>LT n</code></td><td>otočení doleva o n stupňů</td></tr>
+                    <tr><td><code>VPRAVO n</code> / <code>RT n</code></td><td>otočení doprava</td></tr>
+                    <tr><td><code>NAHORU</code> / <code>PU</code>, <code>DOLU</code> / <code>PD</code></td><td>zvednout / položit pero</td></tr>
+                    <tr><td><code>DOMU</code> / <code>HOME</code></td><td>zpět do středu, směr nahoru</td></tr>
+                    <tr><td><code>SETXY x y</code>, <code>SETX x</code>, <code>SETY y</code></td><td>skok na souřadnice (kreslí, je-li pero dole)</td></tr>
+                    <tr><td><code>NASTAVSMER n</code> / <code>SETH n</code></td><td>nastaví směr (0 = nahoru, po směru hodin)</td></tr>
+                    <tr><td><code>BARVA "red</code> / <code>SETPC 4</code> / <code>SETPC [255 0 0]</code></td><td>barva pera (jméno, číslo 0–15, nebo RGB 0–255)</td></tr>
+                    <tr><td><code>SETBG "black</code></td><td>barva pozadí</td></tr>
+                    <tr><td><code>TLOUSTKA n</code> / <code>SETPS n</code></td><td>tloušťka pera</td></tr>
+                    <tr><td><code>SKRYJ</code> / <code>HT</code>, <code>UKAZ</code> / <code>ST</code></td><td>skrýt / ukázat želvu</td></tr>
+                    <tr><td><code>SMAZ</code> / <code>CS</code>, <code>CLEAN</code></td><td>smazat obrazovku (CS i želvu domů)</td></tr>
+                    <tr><td><code>OPAKUJ n [ ... ]</code> / <code>REPEAT</code></td><td>opakování</td></tr>
+                    <tr><td><code>KDYZ podmínka [ ... ]</code> / <code>IF</code>, <code>KDYZJINAK p [..] [..]</code> / <code>IFELSE</code></td><td>podmínka</td></tr>
+                    <tr><td><code>UDELEJ "x 5</code> / <code>MAKE</code>, použití <code>:x</code></td><td>proměnná</td></tr>
+                    <tr><td><code>PIS ...</code> / <code>PRINT</code>, <code>POPIS ...</code> / <code>LABEL</code></td><td>vypíše do konzole / napíše text na obrazovku</td></tr>
+                    <tr><td><code>PRIKAZ jmeno :a :b ... KONEC</code> / <code>TO ... END</code></td><td>nový příkaz s parametry (může volat sám sebe)</td></tr>
+                    <tr><td><code>ZASTAV</code> / <code>STOP</code>, <code>VRAT x</code> / <code>OUTPUT x</code></td><td>konec příkazu / vrácení hodnoty</td></tr>
+                    <tr><td colspan="2">
+                        Funkce: <code>NAHODA n</code>, <code>ODMOCNINA</code>, <code>SIN</code>, <code>COS</code>, <code>ABS</code>, <code>INT</code>,
+                        <code>ZBYTEK a b</code>, <code>MOCNINA a b</code>, <code>MIN</code>, <code>MAX</code>, <code>XCOR</code>, <code>YCOR</code>, <code>SMER</code>, <code>PI</code>.
+                        Operátory <code>+ - * / &lt; &gt; = &lt;= &gt;= &lt;&gt;</code>, spojky <code>A</code>, <code>NEBO</code>, <code>NE</code>.
+                        Komentář začíná <code>;</code>. Pozor: <code>50 -50</code> jsou dvě čísla, odčítání piš s mezerami: <code>50 - 50</code>.
+                    </td></tr>
+                </table>
+            </details>
+        </section>
+    </main>
+
+    <script src="js/logo.js"></script>
+</body>
+</html>
